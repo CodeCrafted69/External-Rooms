@@ -5,194 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rooms: External</title>
     <style>
-        /* Basic page styles */
+        /* Basic page styling */
         body {
             margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
-            color: white;
-            text-align: center;
+            background: url("https://tr.rbxcdn.com/180DAY-ecf19089ad7a5dc672b9870cbb392001/768/432/Image/Webp/noFilter") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             overflow: hidden;
         }
 
-        /* Background container */
-        .background-content {
-            background-image: url('https://tr.rbxcdn.com/180DAY-ecf19089ad7a5dc672b9870cbb392001/768/432/Image/Webp/noFilter');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            transition: filter 0.3s ease;
-            position: relative;
+        .content {
+            text-align: center;
+            color: #3498db;
         }
 
-        /* Blur effect applied to background content */
-        .background-blur {
-            filter: blur(8px);
-            background-color: rgba(0, 0, 0, 0.5); /* Matching title color */
-        }
-
-        /* Title styling */
         h1 {
-            font-size: 5vw;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 1vh 2vw;
-            border-radius: 1vw;
-            margin: 0;
+            font-size: 3em;
+            margin-bottom: 20px;
         }
 
         /* Button styling */
-        .button-container {
-            margin-top: 2vh;
+        .buttons {
+            display: inline-flex;
+            gap: 10px;
         }
 
-        .button {
-            font-size: 3vw;
-            padding: 1vh 2vw;
-            background-color: rgba(0, 0, 0, 0.5); /* Matches title color */
-            color: white;
+        button {
+            padding: 10px 20px;
             border: none;
-            border-radius: 1vw;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s;
-            margin: 1vh 0;
-        }
-
-        .button:hover {
-            background-color: rgba(0, 0, 0, 0.7); /* Darker on hover */
-        }
-
-        /* Popup GUI styles */
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80vw;
-            max-width: 500px;
-            background-color: rgba(0, 0, 0, 0.5); /* Matches title color */
+            border-radius: 8px;
             color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-            text-align: left;
-            display: none;
-            z-index: 10;
+            background-color: #3498db;
+            cursor: pointer;
+            font-size: 1em;
         }
 
-        .popup h2 {
+        button:hover {
+            opacity: 0.9;
+        }
+
+        /* Pop-up styling */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            max-width: 80%;
+            text-align: center;
+            position: relative;
+        }
+
+        .popup-content h2 {
             margin-top: 0;
         }
 
-        .popup-text {
-            margin: 1vh 0;
-            font-size: 1.2em;
+        .popup-content p {
+            margin: 10px 0;
         }
 
-        /* Close button styles */
         .close-btn {
             position: absolute;
             top: 10px;
             right: 10px;
             background: none;
             border: none;
-            font-size: 1.5em;
-            cursor: pointer;
             color: white;
+            font-size: 1.2em;
+            cursor: pointer;
         }
 
-        /* Links styling */
-        .popup-text a {
-            color: #00aaff;
-            text-decoration: none;
-        }
-
-        .popup-text a:hover {
-            text-decoration: underline;
-        }
-
-        /* Add space between credit texts */
-        .popup-text .credit-text {
-            margin-top: 2vh; /* Adds space above Aden_heal */
-        }
-
-        /* Add space below Nedimarda534 text */
-        .popup-text .first-credit {
-            margin-bottom: 2vh; /* Adds space below Nedimarda534 */
-        }
-
-        /* Credits popup styles - increase bottom space */
-        #credits-popup {
-            height: 350px; /* Increased height */
-            padding-bottom: 30px; /* Increased padding at the bottom */
+        /* Blurring background */
+        .blurred {
+            filter: blur(5px);
         }
     </style>
 </head>
 <body>
-    <!-- Background content -->
-    <div class="background-content" id="background-content">
+    <div class="content">
         <h1>Rooms: External</h1>
-        <div class="button-container">
-            <a href="https://www.roblox.com/games/93706832380757/ROOMS-External" target="_blank" class="button">View on Roblox</a>
-            <button class="button" onclick="showDescriptionPopup()">Description</button>
-            <button class="button" onclick="showCreditsPopup()">Credits</button>
+        <div class="buttons">
+            <button onclick="window.location.href='https://www.roblox.com/games/93706832380757/ROOMS-External'">View On Roblox</button>
+            <button id="description-btn">Description</button>
+            <button id="credits-btn">Credits</button>
+            <button onclick="window.location.href='https://rooms-external.fandom.com/wiki/Wiki'">Wiki</button>
         </div>
     </div>
 
-    <!-- Description Popup GUI -->
-    <div class="popup" id="description-popup">
-        <button class="close-btn" onclick="closeDescriptionPopup()">&#10005;</button>
-        <h2>Description</h2>
-        <p class="popup-text">A Rooms Fangame That I Created. Heavily Inspired By Expanded Rooms.</p>
+    <!-- Pop-up overlays -->
+    <div id="description-popup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('description-popup')">X</button>
+            <h2>Description</h2>
+            <p>A Rooms Fangame That I Created. Heavily Inspired By Expanded Rooms.</p>
+        </div>
     </div>
 
-    <!-- Credits Popup GUI -->
-    <div class="popup" id="credits-popup">
-        <button class="close-btn" onclick="closeCreditsPopup()">&#10005;</button>
-        <h2>Credits</h2>
-        <p class="popup-text first-credit">
-            <a href="https://www.roblox.com/users/1310224466/profile/" target="_blank">Nedimarda534</a> (Main Dev/Creator)
-        </p>
-        <p class="popup-text credit-text">
-            <br> <!-- Line break added for spacing -->
-            <a href="https://www.roblox.com/users/3251700148/profile" target="_blank">Aden_heal</a> (Ideas/Beta Tester)
-        </p>
-        <p class="popup-text credit-text">
-            <br> <!-- Line break added for spacing -->
-            <a href="https://www.roblox.com/users/2730485724/profile?friendshipSourceType=PlayerSearch" target="_blank">luka_suza</a> (Beta Tester)
-        </p>
-        <p class="popup-text credit-text">
-            <br> <!-- Line break added for spacing -->
-            <a href="https://www.roblox.com/users/2510071862/profile?friendshipSourceType=PlayerSearch" target="_blank">Andrei13907</a> (Beta Tester)
-        </p>
+    <div id="credits-popup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('credits-popup')">X</button>
+            <h2>Credits</h2>
+            <p><a href="https://www.roblox.com/users/1310224466/profile/" target="_blank" style="color: white; text-decoration: underline;">Nedimarda534</a> (Main Dev/Creator)</p>
+            <p><a href="https://www.roblox.com/users/3251700148/profile/" target="_blank" style="color: white; text-decoration: underline;">Aden_heal</a> (Ideas/Beta Tester)</p>
+            <p><a href="https://www.roblox.com/users/2730485724/profile?friendshipSourceType=PlayerSearch" target="_blank" style="color: white; text-decoration: underline;">luka_suza</a> (Beta Tester)</p>
+            <p><a href="https://www.roblox.com/users/2510071862/profile?friendshipSourceType=PlayerSearch" target="_blank" style="color: white; text-decoration: underline;">Andrei13907</a> (Beta Tester)</p>
+        </div>
     </div>
 
     <script>
-        function showDescriptionPopup() {
-            document.getElementById("description-popup").style.display = "block";
-            document.getElementById("background-content").classList.add("background-blur");
+        // Function to open the pop-up and apply background blur
+        function openPopup(popupId) {
+            document.getElementById(popupId).style.display = 'flex';
+            document.body.classList.add('blurred');
         }
 
-        function closeDescriptionPopup() {
-            document.getElementById("description-popup").style.display = "none";
-            document.getElementById("background-content").classList.remove("background-blur");
+        // Function to close the pop-up and remove background blur
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+            document.body.classList.remove('blurred');
         }
 
-        function showCreditsPopup() {
-            document.getElementById("credits-popup").style.display = "block";
-            document.getElementById("background-content").classList.add("background-blur");
-        }
+        // Event listeners for buttons
+        document.getElementById('description-btn').addEventListener('click', function() {
+            openPopup('description-popup');
+        });
 
-        function closeCreditsPopup() {
-            document.getElementById("credits-popup").style.display = "none";
-            document.getElementById("background-content").classList.remove("background-blur");
-        }
+        document.getElementById('credits-btn').addEventListener('click', function() {
+            openPopup('credits-popup');
+        });
     </script>
 </body>
 </html>
